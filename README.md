@@ -60,6 +60,7 @@ asked — and wants to be able to check every claim the system makes about what 
 | **Claude Pro or Max** | Free cannot run scheduled work |
 | **Claude Code**, installed and signed in | This is a Claude Code plugin |
 | **A GitHub account** connected to claude.ai | Your team runs in the cloud from a GitHub repo |
+| **A Vercel account, made a few days before**, signed in with that GitHub account | Your phone dashboard runs there. A new Vercel account can ask to verify a phone number and then lock you out for up to 12 hours, which ends a live session. Make it early and finish that check |
 | **Node.js 20 or newer** | For the checks your team repo runs. `node --version` |
 
 Works on Mac and Windows.
@@ -94,7 +95,7 @@ If you are working on this repo rather than using it:
 npm test
 ```
 
-79 tests, no dependencies to install. They cover the deterministic helpers the skills shell out to
+81 tests, no dependencies to install. They cover the deterministic helpers the skills shell out to
 — the routine formatter's cron parsing and timezone arithmetic, mostly, because doing that by hand
 is how a monthly job gets reported as daily.
 
@@ -145,7 +146,7 @@ ledger still has problems in it.
 
 ```
 agent-team-os/skills/     the twelve commands
-tests/                    79 tests, no dependencies
+tests/                    81 tests, no dependencies
 ```
 
 Each command is a `SKILL.md` — plain instructions Claude follows, which you can read and change.
