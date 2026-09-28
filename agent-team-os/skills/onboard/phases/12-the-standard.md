@@ -112,7 +112,12 @@ in `shared/writing-rules.md` or in the rubric.
 
 ### 6. Turn on the two weekly jobs
 
-Register both as scheduled routines, the same way phase 8 registered the first one:
+Register both as scheduled routines, the same way phase 8 registered the first one, with
+**no connectors**: both read the repo and nothing else. Created through `/arm` or the routines
+API, a routine gets every connector on the account unless the call names an empty list, so name
+it, then read the routine back and check the list is empty before its first run, test runs
+included. The model comes from the owner agent's row in `shared/standards/model-card.md`: the
+editor and the orchestrator are Opus.
 
 | Job | When | What lands |
 |---|---|---|

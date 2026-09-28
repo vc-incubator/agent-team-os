@@ -81,9 +81,16 @@ RemoteTrigger {
   name: "<workflow name>",
   schedule: "<the workflow's own schedule>",
   prompt: "<what the job should do, from the workflow file>",
-  repo: "<owner>/<repo>"
+  repo: "<owner>/<repo>",
+  model: "<the owner agent's model, from shared/standards/model-card.md>",
+  mcp_connections: [<only the connectors whose used_by names this workflow; [] for none>]
 }
 ```
+
+**Name the connectors, every time, even when the answer is none.** A create that leaves them out
+gets every connector on the account, with write access: on 2026-09-24 two weekly jobs that only
+read their own repo were created holding a student's n8n, ClickUp and drive. The list comes from
+`connections/register.yml`: a connector whose `used_by` names this workflow, and nothing else.
 
 Then, in the same breath:
 
@@ -93,7 +100,9 @@ RemoteTrigger { action: "list" }
 
 **A create you did not confirm did not happen.** The call returning without an error is not the
 same as a routine existing, and this is exactly the class of claim the rest of this system refuses
-to make. Confirm it, then set `armed: true` in the workflow file and commit.
+to make. Confirm it, and read its `mcp_connections` and model back while you are there: if either
+is not what you asked for, fix it with an update before the routine's first run, a test run
+included. Then set `armed: true` in the workflow file and commit.
 
 Arm them **one at a time**, confirming each. Not in a batch. A batch that half-fails leaves a repo
 whose files disagree with reality, which is the state you were called here to fix.
