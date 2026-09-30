@@ -45,6 +45,13 @@ Write the second answer in their words. If it is still broad, write it anyway an
 Replace each `<!-- fill: name -->` line with the answer, in their words, not yours. Keep
 their phrasing — that is half the point of the file.
 
+**One addition to `timezone`, and it is yours, not theirs:** after their words, add the time
+zone's IANA name in brackets. "Cochabamba, 8 to 6 (America/La_Paz)." Look it up from the city if
+you are not sure; ask only if the city is ambiguous. The team's scripts read that name to date
+every file on the owner's day rather than UTC's, and to tell a scheduled run from a Run now. An
+offset such as "UTC-4" also works but ignores daylight saving, and a city name alone gives them
+nothing, so every evening run gets filed under tomorrow.
+
 ## Check
 
 ```bash
