@@ -46,9 +46,30 @@ Ask them to type:
 
 It will decline and leave the report. Say why:
 
-> "Every agent on this team drafts and stops. Not because it cannot send — because sending
-> the wrong thing while you are asleep costs you a relationship, and a bad draft costs you
-> ten seconds of reading."
+> "Every agent on this team drafts and stops, and it is not only told to: sending is switched
+> off. Sending the wrong thing while you are asleep costs you a relationship, and a bad draft
+> costs you ten seconds of reading. So the default is strict."
+
+Then show them the switch, so strict is a choice they can change rather than a wall. Open
+`.claude/settings.json` in their repo and point at the `deny` list:
+
+| This line | Switches off, for every connected tool |
+|---|---|
+| `"mcp__*_send*"` | Sending a new email or message |
+| `"mcp__*_reply*"` | Replying to one |
+| `"mcp__*_forward*"` | Forwarding one |
+| `"mcp__*_publish*"` | Publishing a post or a page |
+| `"mcp__*_delete*"`, `"mcp__*_trash*"` | Deleting or binning anything |
+
+> "If one day you want a job to send on its own, say a reminder that goes out every Friday,
+> delete that one line, commit, and push. Only that one. Everything else stays off. Every run
+> reads this file, the scheduled ones included, so the change applies everywhere at once, and
+> putting the line back switches it off again."
+
+Two things to say with it. Ask for the change in a session with you, never in a routine: an
+unattended run should not be deciding what it is allowed to do. And once a line is gone, the
+job's own rules (its `never` list and the "drafts only" in its prompt) are the only thing left
+between a draft and a sent email, so write the rule down before taking the switch away.
 
 ### 5. Commit
 
@@ -63,7 +84,8 @@ git push
 - A dated file exists in `agents/research/output/`
 - A matching file exists in `runs/<YYYY-MM>/`
 - `node scripts/validate-run-log.mjs` reports the log as valid
-- The user can say, in their own words, why the agent refused to send
+- The user can say, in their own words, why the agent refused to send, and which line in
+  `.claude/settings.json` they would remove to let a job send
 
 ## If it goes wrong
 
