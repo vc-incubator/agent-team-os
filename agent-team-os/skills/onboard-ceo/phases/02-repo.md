@@ -20,7 +20,7 @@ idea the rest depends on.
 
 Browser only. **Do not show them a command.**
 
-1. Go to `github.com/automatedmarketer/ceo-team-template`
+1. Go to `github.com/vc-incubator/ceo-team-template`
 2. Press **Use this template** → **Create a new repository**
 3. Name it — theirs to choose. `my-ceo-team` is fine
 4. **Private.** Not a default they can change. Their numbers and their team go in here
