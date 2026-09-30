@@ -22,6 +22,12 @@ Say that up front so nobody sits waiting.
 
 `claude.ai/code` → Routines → New. Point it at their repo.
 
+**Then the Connectors list, at the bottom of the form.** Every connector on their account is
+ticked by default, with write access, whatever the job is. A routine that only reads and writes
+its own repo needs none of them. Untick all of them, save, and open the routine again to check
+the list is empty. A daily job holding their n8n, their CRM and their drive for no reason is
+access nobody chose. Research reads the web, not their accounts, so its list stays empty.
+
 ### 2. Write the prompt
 
 > "Run the research agent. Today's topic: what competitors in my market changed this week.
@@ -66,6 +72,7 @@ Open `claude.ai/settings/usage`. Look at what a single run cost them. Say:
 ## Check
 
 - The routine appears in the routines list with a schedule attached
+- Its Connectors list, opened again after saving, is empty
 - `git log` shows a commit the user did not author
 - A new file exists in `runs/<YYYY-MM>/` with `trigger` set to `schedule`
 - That run log has a `session_url` that opens the transcript
