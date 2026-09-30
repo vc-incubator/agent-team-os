@@ -6,7 +6,7 @@ Twelve commands for Claude Code. They set up a team repo, measure where your wee
 propose a team from those numbers, and switch on only the jobs you approved.
 
 This repo is **the tooling**. Your team lives in a separate repo of your own — see
-[agent-team-template](https://github.com/AutomatedMarketer/agent-team-template).
+[agent-team-template](https://github.com/vc-incubator/agent-team-template).
 
 ---
 
@@ -69,7 +69,7 @@ Works on Mac and Windows.
 ## Install
 
 ```
-/plugin marketplace add automatedmarketer/agent-team-os
+/plugin marketplace add vc-incubator/agent-team-os
 /plugin install agent-team-os
 ```
 
