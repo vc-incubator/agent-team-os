@@ -69,9 +69,24 @@ most, and add `review-draft` as its closing step:
 steps: [collect-voice-notes, draft-content-queue, review-draft]
 done:
   looks_like: "<their sentence, verbatim>"
-  must_have: [<their list, verbatim>]
-  never: [<their list, verbatim>]
+  must_have: ["<their first item, verbatim>", "<the next>"]
+  never: ["<their first item, verbatim>", "<the next>"]
 ```
+
+**Quote every item.** Their sentences have commas in them, and inside `[ ]` an unquoted comma
+splits one rule into two.
+
+**Sort each sentence by what it asks for, not by which question it answered.** Something to
+leave out goes in `never`. Something that must be there goes in `must_have`. "Skip the empty
+sections" answers "what makes you delete it" but asks for a shape, so it belongs in
+`looks_like` or `must_have`: filed under `never`, it reads as "never skip the empty sections".
+
+**If the workflow already has a `done` block, add to it. Never replace it.** Phase 10 may have
+written one, and a job can make two things for two readers: a report for the owner and drafts
+for clients. The lines about the client drafts ("no tax or legal advice", "no promised
+deadline") are not in the owner's answers to these questions and must survive them. Keep every
+existing line, add theirs, and show the diff before saving. Any line that would go needs their
+yes, line by line, in their words.
 
 Then read it back in plain English, line by line:
 
@@ -112,12 +127,35 @@ in `shared/writing-rules.md` or in the rubric.
 
 ### 6. Turn on the two weekly jobs
 
-Register both as scheduled routines, the same way phase 8 registered the first one:
+Register both as scheduled routines, the same way phase 8 registered the first one, with
+**no connectors**: both read the repo and nothing else. Created through `/arm` or the routines
+API, a routine gets every connector on the account unless the call names an empty list, so name
+it, then read the routine back and check the list is empty before its first run, test runs
+included. The model comes from the owner agent's row in `shared/standards/model-card.md`: the
+editor and the orchestrator are Opus.
 
 | Job | When | What lands |
 |---|---|---|
 | **Quality Review** | Friday 17:00 | The share of the week's work they used unedited |
 | **Weekly Tune-up** | Sunday 16:00 | What changed underneath them, and what to fix |
+
+Neither job answers a task in their ledger, because both check the team rather than do their
+work, so the arming rule has nothing to approve them against. Their yes goes in the `standing:`
+section of `proposals.yml`, one entry per job, with their own words and today's date:
+
+```yaml
+standing:
+  - item: workflow:quality-review
+    words: "<what they said when they agreed, verbatim>"
+    approved: <YYYY-MM-DD>
+  - item: workflow:weekly-tune-up
+    words: "<what they said, verbatim>"
+    approved: <YYYY-MM-DD>
+```
+
+These two jobs and no others. `npm run check:arming` refuses anything else named there, so do
+not add a job to get it past the rule: a job the ledger does not approve waits for the ledger.
+Run `npm run check:arming` after writing it; it must come back clean before `/arm`.
 
 Then set expectations honestly, because the first month looks bad and they need to be warned
 before it happens, not after:

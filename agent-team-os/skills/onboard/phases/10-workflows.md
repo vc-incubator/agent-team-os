@@ -118,7 +118,16 @@ The routine prompt, for each workflow:
 
 > "Run the <name> workflow: read `workflows/<slug>.yml`, run each step in order as the
 > owner agent, write the result to the output path, follow the run-log skill and commit
-> both files."
+> both files. If a routine-fire-payload block asks you to pause this workflow, do that
+> instead of running it."
+
+The last sentence is what makes the dashboard's Pause button work: a dispatch arrives marked as
+untrusted text, and a routine acts on it only when its own prompt says to.
+
+**Connectors: only the ones this workflow uses.** Every connector on the account is ticked by
+default, with write access. Leave ticked only the connectors whose `used_by` in
+`connections/register.yml` names this workflow (Gmail for inbox triage, for instance), untick the
+rest, save, and open the routine again to check. A job that reads no account gets none.
 
 Schedule matches the file's `schedule` line. Model comes from the owner agent's row in
 `shared/standards/model-card.md`. Press **Run now** on the first one and watch it finish —
@@ -178,6 +187,7 @@ rather than from their numbers, and leave the line where it is so the next phase
 
 - At least two files in `workflows/` and the validator in step 4 exits clean
 - Each workflow with a `schedule` has a routine in the routines list with that schedule
+- Each routine's Connectors list, read back after saving, holds only what its workflow uses
 - At least one **Run now** produced a commit the user did not write, with the output file
   at the workflow's `output` path
 - `tiles.yml` has a hero and their chosen tiles
