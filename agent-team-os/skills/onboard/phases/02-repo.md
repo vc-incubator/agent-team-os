@@ -25,12 +25,12 @@ Then check they got it: "So where does your business information have to live?" 
 ### 2. Create it from the template
 
 ```bash
-gh repo create <name> --private --template automatedmarketer/agent-team-template --clone
+gh repo create <name> --private --template vc-incubator/agent-team-template --clone
 cd <name>
 ```
 
 If `gh` is not installed or not signed in, the manual path is: open
-`github.com/automatedmarketer/agent-team-template`, press **Use this template**, name it,
+`github.com/vc-incubator/agent-team-template`, press **Use this template**, name it,
 then clone it with the URL GitHub shows.
 
 Private for now. If they own the business, public later is a choice about showing it off. If

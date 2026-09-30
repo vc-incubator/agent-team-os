@@ -28,7 +28,7 @@ nowhere else.
 
 Their copy, on their GitHub:
 
-> "Open `github.com/automatedmarketer/agent-cockpit` and press **Fork**, top right. Keep
+> "Open `github.com/vc-incubator/agent-cockpit` and press **Fork**, top right. Keep
 > the name. This copy is yours — if we disappear tomorrow, it keeps working."
 
 ### 2. Put it on Vercel
