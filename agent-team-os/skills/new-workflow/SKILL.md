@@ -154,11 +154,12 @@ One routine runs the whole chain: one run against the daily cap, not one per ste
 
 **The button** — if it has `fire: true` and their dashboard is deployed: the workflow appears on
 the board on the next visit, but the button dispatches nothing until its trigger URL is
-registered. That happens after `/arm` has made the routine: open the routine, copy its trigger
-URL, add `"<slug>": "<that URL>"` to `FIRE_TRIGGERS` in the Vercel project's environment
-variables, redeploy. The URL goes into the Vercel form only — not into the repo, not into this
-chat. If one gets pasted here anyway, tell them to regenerate it on the routine and do not repeat
-it back.
+registered. That happens after `/arm` has made the routine: open the routine → **Edit** →
+**Add another trigger** → **API**, copy the URL, **Generate token**, and add
+`"<slug>": {"url": "<that URL>", "token": "<that token>"}` to `FIRE_TRIGGERS` in the Vercel
+project's environment variables, then redeploy. The token is shown once. Both go into the Vercel
+form only — not into the repo, not into this chat. If one gets pasted here anyway, tell them to
+regenerate it on the routine and do not repeat it back.
 
 ## Report back
 
@@ -169,5 +170,5 @@ it back.
 **Owner:** <agent> on <model alias>
 **Runs:** <schedule in plain words, or "button only"> — one run against the daily cap
 **Lands in:** <output path>
-**Button:** <wired / needs its trigger URL added to FIRE_TRIGGERS>
+**Button:** <wired / needs its trigger URL and token added to FIRE_TRIGGERS>
 ```
